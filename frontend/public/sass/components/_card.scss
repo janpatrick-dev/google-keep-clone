@@ -1,0 +1,26 @@
+.card__container {
+  background-color: white;
+  margin: 10px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+  transition: transform .2s;
+
+  &:hover {
+    transform: translateY(-10px);
+  }
+}
+
+.card__title {
+  margin-bottom: 20px;
+}
+
+.card__content {
+  display: block;
+  font-family: inherit;
+  font-size: 14px;
+  word-wrap: break-word;
+
+  // overflow: hidden;
+  // text-overflow: ellipsis;
+}
