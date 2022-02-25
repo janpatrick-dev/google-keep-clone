@@ -3,7 +3,8 @@ import React from 'react';
 function Note(props) {
   return (
     <div>
-      Hello World!
+      {props.title}
+      {props.content}
     </div>
   );
 }
