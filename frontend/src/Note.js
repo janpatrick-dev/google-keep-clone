@@ -4,11 +4,11 @@ function Note(props) {
   return (
     <div className="card__container">
       { props.title ? <h1 className="card__title">{props.title}</h1> : null }
-      <p>
+      <span>
         <pre className="card__content">
           {props.content}
         </pre>
-      </p>
+      </span>
     </div>
   );
 }

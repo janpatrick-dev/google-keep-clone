@@ -1,34 +1,39 @@
 import React, { useEffect, useState } from 'react';
 import Note from './Note.js';
 import AddNote from './AddNote.js';
+import Axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
-
-const LOCAL_STORAGE_KEY = 'notes';
 
 function App() {
 
   const [notes, setNotes] = useState([]);
 
-  // SAVE TO LOCAL START
   useEffect(() => {
-    const storedNotes = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
-    if (storedNotes) setNotes(storedNotes);
-  }, [])
-
-  useEffect(() => {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(notes))
-  }, [notes])
-  // SAVE TO LOCAL END
+    Axios.get('http://localhost:3001/notes')
+      .then(response => {
+        setNotes(response.data);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }, []);
 
   function addNote(title, content) {
+    const newNote = {
+      title: title,
+      content: content
+    }
+    Axios.post('http://localhost:3001/notes', newNote)
+      .then(response => {
+        console.log(response);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+
     setNotes(prevNotes => {
-      const newNote = {
-        id: uuidv4(),
-        title: title,
-        content: content
-      }
       return [...prevNotes, newNote];
-    })
+    });
   }
 
   return (
@@ -37,7 +42,7 @@ function App() {
       <div className='notes__container'>
         {notes.map(note => {
           console.log(notes);
-          return <Note title={note.title} content={note.content} />
+          return <Note key={uuidv4()} title={note.title} content={note.content} />
         })}
       </div>
     </div>
