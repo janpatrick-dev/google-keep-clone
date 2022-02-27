@@ -1,0 +1,19 @@
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, -40%) scale(0);
+    z-index: 150;
+  }
+
+  80% {
+    transform: translate(-50%, -40%) scale(1.05);
+  }
+
+  100% {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -40%) scale(1);
+    z-index: 150;
+  }
+}
