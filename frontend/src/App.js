@@ -12,7 +12,7 @@ function App() {
   const [noteToEdit, setNoteToEdit] = useState(null);
 
   useEffect(() => {
-    Axios.get('http://localhost:3001/notes')
+    Axios.get('https://keep-mern.herokuapp.com/notes')
       .then(response => {
         // log
         // if (response.data.length > 3) {
@@ -31,7 +31,7 @@ function App() {
       title: title,
       content: content
     }
-    Axios.post('http://localhost:3001/notes', newNote)
+    Axios.post('https://keep-mern.herokuapp.com/notes', newNote)
       .then(response => {
         // console.log(response);
       })
@@ -50,7 +50,7 @@ function App() {
       title: title,
       content: content
     }
-    Axios.patch('http://localhost:3001/update', newNote)
+    Axios.patch('https://keep-mern.herokuapp.com/update', newNote)
       .then(response => {
         console.log(response);
       })
@@ -66,7 +66,7 @@ function App() {
   }
 
   function deleteNote(id) {
-    Axios.delete(`http://localhost:3001/delete/${id}`)
+    Axios.delete(`https://keep-mern.herokuapp.com/delete/${id}`)
       .then(response => {
         console.log(response);
       })
