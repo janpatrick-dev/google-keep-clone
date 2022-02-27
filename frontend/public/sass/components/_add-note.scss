@@ -4,6 +4,10 @@
   margin: 0 auto;
 
   position: relative;
+
+  @media (max-width: 600px) {
+    max-width: 300px;
+  }
 }
 
 .add-note__input-container {

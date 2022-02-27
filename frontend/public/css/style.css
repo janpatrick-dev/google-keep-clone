@@ -40,6 +40,11 @@ pre {
   margin: 0 auto;
   position: relative;
 }
+@media (max-width: 600px) {
+  .add-note__container {
+    max-width: 300px;
+  }
+}
 
 .add-note__input-container {
   text-align: center;
@@ -166,6 +171,12 @@ pre {
   overflow: hidden;
   z-index: 150;
   animation: fadeIn 0.4s ease-out;
+}
+@media (max-width: 600px) {
+  .edit-note__input {
+    min-width: 300px;
+    max-width: 300px;
+  }
 }
 .edit-note__title {
   width: auto;

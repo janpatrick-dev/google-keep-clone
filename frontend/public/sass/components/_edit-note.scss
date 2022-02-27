@@ -29,6 +29,11 @@
     z-index: 150;
 
     animation: fadeIn .4s ease-out;
+
+    @media (max-width: 600px) {
+      min-width: 300px;
+      max-width: 300px;
+    }
   }
 
   &__title {
