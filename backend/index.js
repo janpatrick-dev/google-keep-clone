@@ -16,11 +16,12 @@ app.get('/notes', async (req, res) => {
       res.send(err);
     }
     res.send(result);
-  });
+  }).limit(18);
 })
 
 app.post('/notes', async (req, res) => {
   const newNote = {
+    id: req.body.id,
     title: req.body.title,
     content: req.body.content
   };
@@ -34,6 +35,34 @@ app.post('/notes', async (req, res) => {
   }
 })
 
-app.listen(3001, () => {
+app.patch('/update', (req, res) => {
+  const newNote = {
+    id: req.body.id,
+    title: req.body.title,
+    content: req.body.content
+  };
+
+  NoteModel.findOneAndUpdate({ id: req.body.id }, newNote, (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("Update successful");
+    }
+  }) 
+})
+
+app.delete('/delete/:id', async (req, res) => {
+  const id = req.params.id;
+  console.log(id);
+  NoteModel.findOneAndDelete({ id: id }, (err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("Document successfully deleted.");
+    }
+  });
+})
+
+app.listen(process.env.PORT || 3001, () => {
   console.log("Server running on port 3001.");
 })
