@@ -1,0 +1,6 @@
+.notes__container {
+  display: grid;
+  padding: 50px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
