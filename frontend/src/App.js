@@ -6,6 +6,7 @@ import Axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
+import ApiUtils from './utils/ApiUtils.js';
 
 function App() {
 
@@ -23,7 +24,7 @@ function App() {
   `;
 
   useEffect(() => {
-    Axios.get('https://keep-mern.herokuapp.com/notes')
+    Axios.get(ApiUtils.serverUrl('/notes'))
       .then(response => {
         setLoading(false);
         setNotes(response.data);
@@ -39,7 +40,7 @@ function App() {
       title: title,
       content: content
     }
-    Axios.post('https://keep-mern.herokuapp.com/notes', newNote)
+    Axios.post(ApiUtils.serverUrl('/notes'), newNote)
       .then(response => {
         // console.log(response);
       })
@@ -58,7 +59,7 @@ function App() {
       title: title,
       content: content
     }
-    Axios.patch('https://keep-mern.herokuapp.com/update', newNote)
+    Axios.patch(ApiUtils.serverUrl('/update'), newNote)
       .then(response => {
         console.log(response);
       })
@@ -74,7 +75,7 @@ function App() {
   }
 
   function deleteNote(id) {
-    Axios.delete(`https://keep-mern.herokuapp.com/delete/${id}`)
+    Axios.delete(`${ApiUtils.serverUrl('/delete')}/${id}`)
       .then(response => {
         console.log(response);
       })
