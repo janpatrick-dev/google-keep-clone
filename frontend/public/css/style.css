@@ -34,6 +34,11 @@ pre {
   white-space: pre-wrap;
 }
 
+.center {
+  margin: 0 auto;
+  text-align: center;
+}
+
 .add-note__container {
   max-width: 500px;
   padding-top: 20px;
@@ -89,7 +94,7 @@ pre {
   right: 10px;
 }
 .add-note__btn:hover {
-  background-color: #cc9a0f;
+  background-color: rgb(204, 154, 15);
   transform: scale(1.1);
 }
 .add-note__btn:active {
