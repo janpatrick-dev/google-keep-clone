@@ -4,9 +4,8 @@ import AddNote from './AddNote.js';
 import EditNote from './EditNote.js';
 import Axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
-import { css } from "@emotion/react";
-import ClipLoader from "react-spinners/ClipLoader";
 import ApiUtils from './utils/ApiUtils.js';
+import LoadingProgress from './LoadingProgress.js';
 
 function App() {
 
@@ -16,12 +15,7 @@ function App() {
 
   // Spinner
   const [loading, setLoading] = useState(true);
-  const [color, setColor] = useState("#ffffff");
-  const override = css`
-    display: block;
-    margin: 0 auto;
-    margin-top: 5rem;
-  `;
+
 
   useEffect(() => {
     Axios.get(ApiUtils.serverUrl('/notes'))
@@ -101,7 +95,7 @@ function App() {
     <div>
       <EditNote showPopup={editMode} note={noteToEdit} onCloseClick={handleCloseClick} onDelete={deleteNote} onSave={updateNote}/>
       <AddNote onAddNote={addNote} />
-      <ClipLoader color={color} loading={loading} size={100} css={override} />
+      <LoadingProgress isLoading={loading} />
       <div className='notes__container'>
         {notes.map(note => {
           return <Note key={uuidv4()} title={note.title} content={note.content} onEditClick={handleEditClick} note={note} />
